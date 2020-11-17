@@ -25,12 +25,14 @@ public class FindPhotos {
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://stage.historic-england.org/");
         driver.manage().window().maximize();
+        homePage = new HomePage(driver);
         homePage.clickImagesNavigation();
         homePage.clickFindPhotosLink();
     }
 
     @When("I search for andover")
     public void i_search_for_andover(String searchTerm) {
+        findPhotosPage = new FindPhotosPage(driver);
         findPhotosPage.enterSearchTerm(searchTerm);
         findPhotosPage.submitSearch();
     }
@@ -49,6 +51,7 @@ public class FindPhotos {
 
     @Then("I should be taken to the results page")
     public void i_should_be_taken_to_the_results_page() {
+        resultsPage = new ResultsPage(driver);
         resultsPage.photoResultsPageHeadingIsDisplayed();
         driver.quit();
     }

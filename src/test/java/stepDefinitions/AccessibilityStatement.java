@@ -25,6 +25,7 @@ public class AccessibilityStatement {
 
     @When("I scroll down to the bottom of the page")
     public void i_scroll_down_to_the_bottom_of_the_page() {
+        homePage = new HomePage(driver);
         homePage.scrollToAccessibilityLink();
     }
 
@@ -35,6 +36,7 @@ public class AccessibilityStatement {
 
     @Then("I should be taken to the Accessibility statement")
     public void i_should_be_taken_to_the_accessibility_statement() {
+        accessibilityStatementPage = new AccessibilityStatementPage(driver);
         accessibilityStatementPage.verifyAccessibilityPageTitle();
         driver.quit();
     }

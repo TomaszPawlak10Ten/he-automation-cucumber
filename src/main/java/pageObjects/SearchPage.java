@@ -8,7 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SearchPage {
 
+    WebDriver driver;
+
     public SearchPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -28,6 +31,10 @@ public class SearchPage {
 
     public void submitSearch(){
         searchSubmitButton.submit();
+    }
+
+    public void firstResultIsDisplayed(){
+        firstResult.isDisplayed();
     }
 
     public void selectFirstResult(){

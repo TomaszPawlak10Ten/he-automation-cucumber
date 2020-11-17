@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.HomePage;
 import pageObjects.ResultsPage;
 import pageObjects.SearchPage;
@@ -41,11 +42,11 @@ public class Search {
 
     @Then("a list of results should display")
     public void the_search_should_successfully_run() {
-        result = new ResultsPage(driver);
-        result.getListEntryNumber();
+        search.firstResultIsDisplayed();
     }
     @Then("a new page should open")
     public void a_new_page_should_open() {
+        result = new ResultsPage(driver);
         result.searchResultPageIsOpen();
         driver.quit();
     }

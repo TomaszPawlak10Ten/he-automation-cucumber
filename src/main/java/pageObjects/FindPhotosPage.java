@@ -9,7 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class FindPhotosPage {
 
+    WebDriver driver;
+
     public FindPhotosPage(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
