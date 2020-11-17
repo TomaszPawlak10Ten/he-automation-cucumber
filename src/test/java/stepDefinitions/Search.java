@@ -23,11 +23,13 @@ public class Search {
         driver = new ChromeDriver();
         driver.get("https://stage.historic-england.org/");
         driver.manage().window().maximize();
+        homePage = new HomePage(driver);
         homePage.navigateToSearchPage();
     }
 
-    @When("I enter a search term into the search bar")
+    @When("I enter {string} into the search bar")
     public void i_enter_into_the_search_bar(String searchTerm) {
+        search = new SearchPage(driver);
         search.enterSearchTerm(searchTerm);
         search.submitSearch();
     }
@@ -39,7 +41,8 @@ public class Search {
 
     @Then("a list of results should display")
     public void the_search_should_successfully_run() {
-        search.getListEntryNumber();
+        result = new ResultsPage(driver);
+        result.getListEntryNumber();
     }
     @Then("a new page should open")
     public void a_new_page_should_open() {

@@ -18,12 +18,19 @@ public class ResultsPage {
     @FindBy(how = How.TAG_NAME, using = "h1")
     private WebElement photoResultsPageHeading;
 
+    @FindBy(how = How.CSS, using = ".nhle-list-entry__items-container dl:nth-child(3) dd")
+    private WebElement listEntryNumber;
+
     public void searchResultPageIsOpen(){
         overviewHeading.isDisplayed();
     }
 
     public void photoResultsPageHeadingIsDisplayed(){
         photoResultsPageHeading.isDisplayed();
+    }
+
+    public void getListEntryNumber(){
+        listEntryNumber.isDisplayed();
     }
 
 

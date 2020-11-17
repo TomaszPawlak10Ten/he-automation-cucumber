@@ -6,12 +6,12 @@ Feature: Search
   Scenario: The user can conduct a search
     As a user
     Given I am on the site search page
-    When I enter a search term into the search bar
+    When I enter "Andover" into the search bar
     Then a list of results should display
 
   Scenario: The user can view a search result
     As a user
     Given I am on the site search page
-    When I enter a search term into the search bar
+    When I enter "Andover" into the search bar
     And I select the first result
     Then a new page should open

@@ -21,9 +21,6 @@ public class SearchPage {
     @FindBy(how = How.CSS, using = "a[href*=\"1262080\"]")
     private WebElement firstResult;
 
-    @FindBy(how = How.CSS, using = "#main-content > div:nth-child(3) > div > div > div > dl:nth-child(3) > dd")
-    private WebElement listEntryNumber;
-
 
     public void enterSearchTerm(String searchTerm) {
         searchBar.sendKeys(searchTerm);
@@ -35,9 +32,5 @@ public class SearchPage {
 
     public void selectFirstResult(){
         firstResult.click();
-    }
-
-    public void getListEntryNumber(){
-        listEntryNumber.isDisplayed();
     }
 }

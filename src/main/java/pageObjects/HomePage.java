@@ -12,10 +12,11 @@ public class HomePage {
     WebDriver driver;
 
     public HomePage(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver,this);
     }
     @FindBy(how = How.CLASS_NAME, using = "header-bar__search-button-link")
-    private WebElement searchSiteButton;
+    private WebElement searchTheSiteButton;
 
     @FindBy(how = How.CSS, using = "a[href*=\"/access/\"]")
     private WebElement accessibilityLink;
@@ -27,7 +28,7 @@ public class HomePage {
     private WebElement findPhotosLink;
 
     public void navigateToSearchPage(){
-        searchSiteButton.click();
+        searchTheSiteButton.click();
     }
 
     public void scrollToAccessibilityLink(){
