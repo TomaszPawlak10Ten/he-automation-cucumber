@@ -24,6 +24,18 @@ public class SearchPage {
     @FindBy(how = How.CSS, using = "a[href*=\"1262080\"]")
     private WebElement firstResult;
 
+    @FindBy(how = How.CLASS_NAME, using = "search-banner__filters--filters-results-button")
+    private WebElement filterResultsButton;
+
+    @FindBy(how = How.CSS, using = "[title~=\"Articles\"]")
+    private WebElement articlesAndWebPagesFilter;
+
+    @FindBy(how = How.ID, using = "filtersubmit")
+    private WebElement applyFiltersButton;
+
+    @FindBy(how = How.CLASS_NAME, using = "green-text-bold")
+    private WebElement articlesAndWebPagesText;
+
 
     public void enterSearchTerm(String searchTerm) {
         searchBar.sendKeys(searchTerm);
@@ -39,5 +51,21 @@ public class SearchPage {
 
     public void selectFirstResult(){
         firstResult.click();
+    }
+
+    public void clickFilterResultsButton(){
+        filterResultsButton.click();
+    }
+
+    public void selectArticlesAndWebPagesFilterOption(){
+        articlesAndWebPagesFilter.click();
+    }
+
+    public void clickApplyFiltersButton(){
+        applyFiltersButton.click();
+    }
+
+    public void articlesAndWebPagesTextIsDisplayed(){
+        articlesAndWebPagesText.isDisplayed();
     }
 }

@@ -1,3 +1,4 @@
+@accessibilityStatement
 Feature: Users can access the Accessibility statement
   As a user
   I need to be able to read the sites Accessibility statement
