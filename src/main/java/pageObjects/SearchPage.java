@@ -45,8 +45,8 @@ public class SearchPage {
         searchSubmitButton.submit();
     }
 
-    public void firstResultIsDisplayed(){
-        firstResult.isDisplayed();
+    public String firstResultIsDisplayed(){
+        return firstResult.getText();
     }
 
     public void selectFirstResult(){
@@ -65,7 +65,7 @@ public class SearchPage {
         applyFiltersButton.click();
     }
 
-    public void articlesAndWebPagesTextIsDisplayed(){
-        articlesAndWebPagesText.isDisplayed();
+    public String articlesAndWebPagesTextIsDisplayed(){
+        return articlesAndWebPagesText.getText();
     }
 }

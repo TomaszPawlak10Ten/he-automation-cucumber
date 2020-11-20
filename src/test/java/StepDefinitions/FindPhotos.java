@@ -1,27 +1,35 @@
 package StepDefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pageObjects.FindPhotosPage;
 import pageObjects.HomePage;
-import pageObjects.ResultsPage;
+import pageObjects.PhotoSearchResultsPage;
 
 public class FindPhotos {
 
     WebDriver driver;
     HomePage homePage;
     FindPhotosPage findPhotosPage;
-    ResultsPage resultsPage;
+    PhotoSearchResultsPage photoSearchResultsPage;
+
+    @Before
+    public void setUp(){
+        System.setProperty("webdriver.chrome.driver", "C://Users//r2williams//IdeaProjects//historic-england-practice//src//main//resources//chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        driver.get("https://stage.historic-england.org/");
+        driver.manage().window().maximize();
+    }
 
     @Given("I am on the Find Photos page")
     public void i_am_on_the_find_photos_page() {
-        System.setProperty("webdriver.chrome.driver", "C://Users//r2williams//IdeaProjects//historic-england-practice//src//main//resources//chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://stage.historic-england.org/");
-        driver.manage().window().maximize();
         homePage = new HomePage(driver);
         homePage.clickImagesNavigation();
         homePage.clickFindPhotosLink();
@@ -48,8 +56,11 @@ public class FindPhotos {
 
     @Then("I should be taken to the results page")
     public void i_should_be_taken_to_the_results_page() {
-        resultsPage = new ResultsPage(driver);
-        resultsPage.photoResultsPageHeadingIsDisplayed();
+        photoSearchResultsPage = new PhotoSearchResultsPage(driver);
+        photoSearchResultsPage.photoResultsPageHeadingIsDisplayed();
+    }
+
+    public void tearDown(){
         driver.quit();
     }
 

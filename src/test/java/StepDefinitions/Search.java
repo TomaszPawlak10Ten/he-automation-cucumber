@@ -1,12 +1,15 @@
 package StepDefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import pageObjects.HomePage;
-import pageObjects.ResultsPage;
+import pageObjects.SearchResultsPage;
 import pageObjects.SearchPage;
 
 
@@ -14,15 +17,21 @@ public class Search {
 
     HomePage homePage;
     SearchPage search;
-    ResultsPage result;
+    SearchResultsPage result;
     WebDriver driver;
+
+    @Before
+    public void setUp(){
+        System.setProperty("webdriver.chrome.driver", "C://Users//r2williams//IdeaProjects//historic-england-practice//src//main//resources//chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        driver.get("https://stage.historic-england.org/");
+        driver.manage().window().maximize();
+    }
 
     @Given("I am on the site search page")
     public void i_am_on_the_site_search_page() {
-        System.setProperty("webdriver.chrome.driver", "C://Users//r2williams//IdeaProjects//historic-england-practice//src//main//resources//chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://stage.historic-england.org/");
-        driver.manage().window().maximize();
         homePage = new HomePage(driver);
         homePage.navigateToSearchPage();
     }
@@ -47,18 +56,22 @@ public class Search {
 
     @Then("only article and web page results should return")
     public void only_article_and_web_page_results_should_return() {
+        Assert.assertTrue(search.articlesAndWebPagesTextIsDisplayed().contains("Articles and Web Pages"));
         search.articlesAndWebPagesTextIsDisplayed();
     }
 
     @Then("a list of results should display")
     public void the_search_should_successfully_run() {
-        search.firstResultIsDisplayed();
+        Assert.assertTrue(search.firstResultIsDisplayed().contains("ANDOVER HOUSE AND ESTATE OFFICE"));
     }
 
     @Then("a new page should open")
     public void a_new_page_should_open() {
-        result = new ResultsPage(driver);
+        result = new SearchResultsPage(driver);
         result.searchResultPageIsOpen();
+    }
+
+    public void tearDown(){
         driver.quit();
     }
 }

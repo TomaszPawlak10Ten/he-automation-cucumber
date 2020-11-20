@@ -18,8 +18,7 @@ public class AccessibilityStatementPage {
     @FindBy(how = How.ID, using = "page-title")
     private WebElement accessibilityPageTitle;
 
-    public void verifyAccessibilityPageTitle(){
-        accessibilityPageTitle.isDisplayed();
-
+    public String verifyAccessibilityPageTitle(){
+        return accessibilityPageTitle.getText();
     }
 }
