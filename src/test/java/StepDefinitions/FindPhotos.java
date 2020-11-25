@@ -4,19 +4,22 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pageObjects.ArchiveSearchResultsPage;
 import pageObjects.FindPhotosPage;
 import pageObjects.HomePage;
-import pageObjects.PhotoSearchResultsPage;
+
+/** Not sure why the data table isn't working */
 
 public class FindPhotos {
 
     WebDriver driver;
     HomePage homePage;
     FindPhotosPage findPhotosPage;
-    PhotoSearchResultsPage photoSearchResultsPage;
+    ArchiveSearchResultsPage archiveSearchResultsPage;
 
     @Before
     public void setUp(){
@@ -56,8 +59,8 @@ public class FindPhotos {
 
     @Then("I should be taken to the results page")
     public void i_should_be_taken_to_the_results_page() {
-        photoSearchResultsPage = new PhotoSearchResultsPage(driver);
-        photoSearchResultsPage.photoResultsPageHeadingIsDisplayed();
+        ArchiveSearchResultsPage archiveSearchResultsPage = new ArchiveSearchResultsPage(driver);
+        Assert.assertTrue(archiveSearchResultsPage.photoResultsPageHeadingIsDisplayed().contains("Archive search results"));
     }
 
     public void tearDown(){

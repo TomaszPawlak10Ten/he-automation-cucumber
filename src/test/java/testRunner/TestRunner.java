@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@accessibilityStatement",
+        tags = "@pagePrinting",
         features = {"classpath:Features"},
         glue = {"classpath:StepDefinitions"},
         plugin = {"pretty", "html:target/reports"},

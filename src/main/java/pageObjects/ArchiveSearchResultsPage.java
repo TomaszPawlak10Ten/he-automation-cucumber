@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class ArchiveSearchResultsPage {
 
 
@@ -42,6 +40,13 @@ public class ArchiveSearchResultsPage {
     @FindBy(how = How.ID, using = "archive-search-results-count")
     private WebElement numberOfResults;
 
+    @FindBy(how = How.TAG_NAME, using = "h1")
+    private WebElement photoResultsPageHeading;
+
+    @FindBy(how = How.CSS, using = "a[href*=\"09831/32\"]")
+    private WebElement imageDetailsPageLink;
+
+
     public void clickFilterResultsButton(){
         filterResultsButton.click();
     }
@@ -73,5 +78,14 @@ public class ArchiveSearchResultsPage {
     public String verifyNumberOfSearchResults(){
         return numberOfResults.getText();
     }
+
+    public String photoResultsPageHeadingIsDisplayed(){
+        return photoResultsPageHeading.getText();
+    }
+
+    public void clickImageDetailsPageLink(){
+         imageDetailsPageLink.click();
+    }
+
 
 }

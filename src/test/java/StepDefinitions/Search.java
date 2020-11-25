@@ -47,6 +47,7 @@ public class Search {
     public void i_select_the_first_result() {
         search.selectFirstResult();
     }
+
     @When("I select the articles and web pages filter")
     public void i_select_the_articles_and_web_pages_filter() {
         search.clickFilterResultsButton();

@@ -27,6 +27,12 @@ public class HomePage {
     @FindBy(how = How.CSS, using = "#navigation-primary__level-2--images-books > div > div:nth-child(1) > ul > li:nth-child(1) > a")
     private WebElement findPhotosLink;
 
+    @FindBy(how = How.CSS, using = "#navigation-primary > ul > li:nth-child(8) > div.navigation-primary__level-1 > a")
+    private WebElement whatsNewNavLink;
+
+    @FindBy(how = How.CSS, using = ".navigation-primary__level-2-list-item a[href=\"/whats-new/news/\"]")
+    private WebElement newsLink;
+
     public void navigateToSearchPage(){
         searchTheSiteButton.click();
     }
@@ -46,6 +52,14 @@ public class HomePage {
 
     public void clickFindPhotosLink(){
         findPhotosLink.click();
+    }
+
+    public void clickWhatsNewNavigation(){
+        whatsNewNavLink.click();
+    }
+
+    public void clickNewsLink(){
+        newsLink.click();
     }
 
 }
